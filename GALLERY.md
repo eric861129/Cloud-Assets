@@ -102,6 +102,26 @@
 | **HTML** | `<img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookOk1.webp" alt="NotebookOk1.webp" loading="lazy">` |
 
 ---
+### 🖼️ NotebookQuasion1.webp
+![NotebookQuasion1.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion1.webp)
+
+| 類型 | 語法 (點擊複製) |
+| :--- | :--- |
+| **CDN Link** | `https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion1.webp` |
+| **Markdown** | `![NotebookQuasion1.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion1.webp)` |
+| **HTML** | `<img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion1.webp" alt="NotebookQuasion1.webp" loading="lazy">` |
+
+---
+### 🖼️ NotebookQuasion2.webp
+![NotebookQuasion2.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion2.webp)
+
+| 類型 | 語法 (點擊複製) |
+| :--- | :--- |
+| **CDN Link** | `https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion2.webp` |
+| **Markdown** | `![NotebookQuasion2.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion2.webp)` |
+| **HTML** | `<img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion2.webp" alt="NotebookQuasion2.webp" loading="lazy">` |
+
+---
 </details>
 
 ## 📁 Share
