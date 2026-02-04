@@ -6,7 +6,7 @@
 
 - 🖼️ **自動圖片優化**：透過 GitHub Actions，上傳的 JPG/PNG 會自動轉換為 WebP 格式，並刪除原圖以節省空間。
 - 🚀 **CDN 加速**：整合 [jsDelivr](https://www.jsdelivr.com/)，提供全球快速的圖片存取體驗。
-- 📂 **自動分組圖庫**：自動產生 `GALLERY.md` 與 `index.html` 靜態頁面，按資料夾結構分類，方便管理。
+- 📂 **自動分組圖庫**：自動產生 `index.html` 靜態頁面，按資料夾結構分類，方便管理。
 - 📋 **一鍵複製**：靜態網頁版提供一鍵複製 Markdown 語法與 CDN 連結的功能。
 - 🤖 **完全自動化**：您只需要負責「上傳圖片」，剩下的工作都由 GitHub Actions 完成。
 

@@ -3,7 +3,7 @@
 ## 📌 專案概述
 - **名稱**: Cloud-Assets
 - **目的**: 自動化 GitHub 圖床。
-- **核心流程**: 上傳圖片 -> GitHub Action 觸發 `optimize.py` -> 轉 WebP + 刪除原圖 -> 更新 `GALLERY.md` & `index.html` -> 自動 Commit 回傳。
+- **核心流程**: 上傳圖片 -> GitHub Action 觸發 `optimize.py` -> 轉 WebP + 刪除原圖 -> 更新 `index.html` -> 自動 Commit 回傳。
 
 ## 🛠️ 技術細節
 - **主要腳本**: `optimize.py` (處理圖片轉換與 HTML/MD 生成)。
