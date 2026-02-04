@@ -7,236 +7,358 @@
     <title>Cloud-Assets 圖庫</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body { background-color: #f8f9fa; padding-top: 50px; }
-        .card { transition: transform 0.2s; margin-bottom: 20px; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .img-preview { height: 200px; object-fit: contain; background: #eee; cursor: pointer; }
-        .copy-btn { cursor: pointer; }
-        .folder-section { margin-bottom: 40px; }
-        details summary { font-size: 1.5rem; font-weight: bold; cursor: pointer; padding: 10px; background: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        details[open] summary { margin-bottom: 20px; }
+        body { background-color: #f8f9fa; padding-top: 30px; padding-bottom: 50px; font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+        
+        /* 圖片卡片樣式 */
+        .card { border: none; transition: transform 0.2s; }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important; }
+        .img-container { height: 150px; overflow: hidden; background: #eee; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .img-preview { max-height: 100%; max-width: 100%; object-fit: contain; }
+        .btn-xs { padding: 0.1rem 0.4rem; font-size: 0.75rem; }
+        
+        /* 樹狀結構與折疊樣式 */
+        .folder-section { margin-bottom: 8px; }
+        .nested-content { 
+            margin-left: 18px; 
+            padding-left: 12px; 
+            border-left: 2px solid #e0e0e0; /* 樹狀連接線 */
+            margin-top: 5px;
+        }
+        
+        details > summary { 
+            list-style: none; 
+            cursor: pointer; 
+            padding: 8px 12px; 
+            background: #fff; 
+            border-radius: 6px; 
+            border: 1px solid #dee2e6;
+            font-weight: 600;
+            display: inline-block;
+            min-width: 250px;
+            user-select: none;
+            position: relative;
+        }
+        details > summary:hover { background-color: #f1f3f5; border-color: #ced4da; }
+        
+        /* 自定義箭頭 */
+        details > summary::marker { display: none; }
+        details > summary::before {
+            content: '▶';
+            display: inline-block;
+            margin-right: 8px;
+            font-size: 0.75rem;
+            color: #6c757d;
+            transition: transform 0.2s ease;
+        }
+        details[open] > summary::before { transform: rotate(90deg); }
+        details[open] > summary { margin-bottom: 5px; background-color: #e9ecef; border-color: #ced4da; }
+
+        h1 { font-size: 1.8rem; color: #343a40; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="d-flex justify-content-between align-items-center mb-5">
-            <h1>📂 Cloud-Assets 圖庫</h1>
-            <a href="https://github.com/eric861129/Cloud-Assets" class="btn btn-outline-dark">GitHub 專案庫</a>
+        <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-3">
+            <h1 class="m-0">📂 Cloud-Assets</h1>
+            <div>
+                 <button class="btn btn-sm btn-outline-secondary me-2" onclick="toggleAll(true)">全部展開</button>
+                 <button class="btn btn-sm btn-outline-secondary me-2" onclick="toggleAll(false)">全部折疊</button>
+                 <a href="https://github.com/eric861129/Cloud-Assets" class="btn btn-sm btn-dark" target="_blank">GitHub</a>
+            </div>
         </div>
 
         <div id="gallery">
             
-        <div class="folder-section">
-            <details open>
-                <summary>📁 Blog/posts/2026/01/MD2PPT (5 張)</summary>
-                <div class="row g-3 mt-2">
-                    
-            <div class="col-md-3 col-sm-6">
-                <div class="card h-100">
-                    <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_01.webp" class="card-img-top img-preview" alt="slide_01.webp" loading="lazy" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_01.webp')">
-                    <div class="card-body">
-                        <p class="card-text text-truncate" title="slide_01.webp"><strong>slide_01.webp</strong></p>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-sm btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_01.webp', this)">複製 CDN 連結</button>
-                            <button class="btn btn-sm btn-outline-secondary copy-btn" onclick="copyToClipboard('![slide_01.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_01.webp)', this)">複製 Markdown</button>
+                <details class="folder-section">
+                    <summary>📁 Blog <span class="badge rounded-pill bg-secondary ms-1">11</span></summary>
+                    <div class="nested-content">
+                        
+                <details class="folder-section">
+                    <summary>📁 posts <span class="badge rounded-pill bg-secondary ms-1">11</span></summary>
+                    <div class="nested-content">
+                        
+                <details class="folder-section">
+                    <summary>📁 2026 <span class="badge rounded-pill bg-secondary ms-1">11</span></summary>
+                    <div class="nested-content">
+                        
+                <details class="folder-section">
+                    <summary>📁 01 <span class="badge rounded-pill bg-secondary ms-1">5</span></summary>
+                    <div class="nested-content">
+                        
+                <details class="folder-section">
+                    <summary>📁 MD2PPT <span class="badge rounded-pill bg-secondary ms-1">5</span></summary>
+                    <div class="nested-content">
+                        
+            <div class="row g-2 mt-1 mb-3">
+                
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="card h-100 shadow-sm">
+                        <div class="img-container" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_01.webp')">
+                             <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_01.webp" class="card-img-top img-preview" alt="slide_01.webp" loading="lazy">
+                        </div>
+                        <div class="card-body p-2">
+                            <p class="card-text text-truncate small mb-2" title="slide_01.webp">slide_01.webp</p>
+                            <div class="d-grid gap-1">
+                                <button class="btn btn-xs btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_01.webp', this)">複製連結</button>
+                                <button class="btn btn-xs btn-outline-secondary copy-btn" onclick="copyToClipboard('![slide_01.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_01.webp)', this)">複製 MD</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="col-md-3 col-sm-6">
-                <div class="card h-100">
-                    <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_05.webp" class="card-img-top img-preview" alt="slide_05.webp" loading="lazy" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_05.webp')">
-                    <div class="card-body">
-                        <p class="card-text text-truncate" title="slide_05.webp"><strong>slide_05.webp</strong></p>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-sm btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_05.webp', this)">複製 CDN 連結</button>
-                            <button class="btn btn-sm btn-outline-secondary copy-btn" onclick="copyToClipboard('![slide_05.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_05.webp)', this)">複製 Markdown</button>
+                
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="card h-100 shadow-sm">
+                        <div class="img-container" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_05.webp')">
+                             <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_05.webp" class="card-img-top img-preview" alt="slide_05.webp" loading="lazy">
+                        </div>
+                        <div class="card-body p-2">
+                            <p class="card-text text-truncate small mb-2" title="slide_05.webp">slide_05.webp</p>
+                            <div class="d-grid gap-1">
+                                <button class="btn btn-xs btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_05.webp', this)">複製連結</button>
+                                <button class="btn btn-xs btn-outline-secondary copy-btn" onclick="copyToClipboard('![slide_05.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_05.webp)', this)">複製 MD</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="col-md-3 col-sm-6">
-                <div class="card h-100">
-                    <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_06.webp" class="card-img-top img-preview" alt="slide_06.webp" loading="lazy" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_06.webp')">
-                    <div class="card-body">
-                        <p class="card-text text-truncate" title="slide_06.webp"><strong>slide_06.webp</strong></p>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-sm btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_06.webp', this)">複製 CDN 連結</button>
-                            <button class="btn btn-sm btn-outline-secondary copy-btn" onclick="copyToClipboard('![slide_06.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_06.webp)', this)">複製 Markdown</button>
+                
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="card h-100 shadow-sm">
+                        <div class="img-container" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_06.webp')">
+                             <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_06.webp" class="card-img-top img-preview" alt="slide_06.webp" loading="lazy">
+                        </div>
+                        <div class="card-body p-2">
+                            <p class="card-text text-truncate small mb-2" title="slide_06.webp">slide_06.webp</p>
+                            <div class="d-grid gap-1">
+                                <button class="btn btn-xs btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_06.webp', this)">複製連結</button>
+                                <button class="btn btn-xs btn-outline-secondary copy-btn" onclick="copyToClipboard('![slide_06.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_06.webp)', this)">複製 MD</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="col-md-3 col-sm-6">
-                <div class="card h-100">
-                    <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_07.webp" class="card-img-top img-preview" alt="slide_07.webp" loading="lazy" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_07.webp')">
-                    <div class="card-body">
-                        <p class="card-text text-truncate" title="slide_07.webp"><strong>slide_07.webp</strong></p>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-sm btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_07.webp', this)">複製 CDN 連結</button>
-                            <button class="btn btn-sm btn-outline-secondary copy-btn" onclick="copyToClipboard('![slide_07.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_07.webp)', this)">複製 Markdown</button>
+                
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="card h-100 shadow-sm">
+                        <div class="img-container" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_07.webp')">
+                             <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_07.webp" class="card-img-top img-preview" alt="slide_07.webp" loading="lazy">
+                        </div>
+                        <div class="card-body p-2">
+                            <p class="card-text text-truncate small mb-2" title="slide_07.webp">slide_07.webp</p>
+                            <div class="d-grid gap-1">
+                                <button class="btn btn-xs btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_07.webp', this)">複製連結</button>
+                                <button class="btn btn-xs btn-outline-secondary copy-btn" onclick="copyToClipboard('![slide_07.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_07.webp)', this)">複製 MD</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="col-md-3 col-sm-6">
-                <div class="card h-100">
-                    <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_08.webp" class="card-img-top img-preview" alt="slide_08.webp" loading="lazy" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_08.webp')">
-                    <div class="card-body">
-                        <p class="card-text text-truncate" title="slide_08.webp"><strong>slide_08.webp</strong></p>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-sm btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_08.webp', this)">複製 CDN 連結</button>
-                            <button class="btn btn-sm btn-outline-secondary copy-btn" onclick="copyToClipboard('![slide_08.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_08.webp)', this)">複製 Markdown</button>
+                
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="card h-100 shadow-sm">
+                        <div class="img-container" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_08.webp')">
+                             <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_08.webp" class="card-img-top img-preview" alt="slide_08.webp" loading="lazy">
+                        </div>
+                        <div class="card-body p-2">
+                            <p class="card-text text-truncate small mb-2" title="slide_08.webp">slide_08.webp</p>
+                            <div class="d-grid gap-1">
+                                <button class="btn btn-xs btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_08.webp', this)">複製連結</button>
+                                <button class="btn btn-xs btn-outline-secondary copy-btn" onclick="copyToClipboard('![slide_08.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/01/MD2PPT/slide_08.webp)', this)">複製 MD</button>
+                            </div>
                         </div>
                     </div>
                 </div>
+                
             </div>
             
+                    </div>
+                </details>
+                
+                    </div>
+                </details>
+                
+                <details class="folder-section">
+                    <summary>📁 02 <span class="badge rounded-pill bg-secondary ms-1">6</span></summary>
+                    <div class="nested-content">
+                        
+                <details class="folder-section">
+                    <summary>📁 NotebookLM <span class="badge rounded-pill bg-secondary ms-1">6</span></summary>
+                    <div class="nested-content">
+                        
+            <div class="row g-2 mt-1 mb-3">
+                
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="card h-100 shadow-sm">
+                        <div class="img-container" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMAddResource.webp')">
+                             <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMAddResource.webp" class="card-img-top img-preview" alt="NotebookLMAddResource.webp" loading="lazy">
+                        </div>
+                        <div class="card-body p-2">
+                            <p class="card-text text-truncate small mb-2" title="NotebookLMAddResource.webp">NotebookLMAddResource.webp</p>
+                            <div class="d-grid gap-1">
+                                <button class="btn btn-xs btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMAddResource.webp', this)">複製連結</button>
+                                <button class="btn btn-xs btn-outline-secondary copy-btn" onclick="copyToClipboard('![NotebookLMAddResource.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMAddResource.webp)', this)">複製 MD</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </details>
+                
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="card h-100 shadow-sm">
+                        <div class="img-container" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMCreateNotebook.webp')">
+                             <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMCreateNotebook.webp" class="card-img-top img-preview" alt="NotebookLMCreateNotebook.webp" loading="lazy">
+                        </div>
+                        <div class="card-body p-2">
+                            <p class="card-text text-truncate small mb-2" title="NotebookLMCreateNotebook.webp">NotebookLMCreateNotebook.webp</p>
+                            <div class="d-grid gap-1">
+                                <button class="btn btn-xs btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMCreateNotebook.webp', this)">複製連結</button>
+                                <button class="btn btn-xs btn-outline-secondary copy-btn" onclick="copyToClipboard('![NotebookLMCreateNotebook.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMCreateNotebook.webp)', this)">複製 MD</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="card h-100 shadow-sm">
+                        <div class="img-container" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMPasteUrl.webp')">
+                             <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMPasteUrl.webp" class="card-img-top img-preview" alt="NotebookLMPasteUrl.webp" loading="lazy">
+                        </div>
+                        <div class="card-body p-2">
+                            <p class="card-text text-truncate small mb-2" title="NotebookLMPasteUrl.webp">NotebookLMPasteUrl.webp</p>
+                            <div class="d-grid gap-1">
+                                <button class="btn btn-xs btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMPasteUrl.webp', this)">複製連結</button>
+                                <button class="btn btn-xs btn-outline-secondary copy-btn" onclick="copyToClipboard('![NotebookLMPasteUrl.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMPasteUrl.webp)', this)">複製 MD</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="card h-100 shadow-sm">
+                        <div class="img-container" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookOk1.webp')">
+                             <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookOk1.webp" class="card-img-top img-preview" alt="NotebookOk1.webp" loading="lazy">
+                        </div>
+                        <div class="card-body p-2">
+                            <p class="card-text text-truncate small mb-2" title="NotebookOk1.webp">NotebookOk1.webp</p>
+                            <div class="d-grid gap-1">
+                                <button class="btn btn-xs btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookOk1.webp', this)">複製連結</button>
+                                <button class="btn btn-xs btn-outline-secondary copy-btn" onclick="copyToClipboard('![NotebookOk1.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookOk1.webp)', this)">複製 MD</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="card h-100 shadow-sm">
+                        <div class="img-container" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion1.webp')">
+                             <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion1.webp" class="card-img-top img-preview" alt="NotebookQuasion1.webp" loading="lazy">
+                        </div>
+                        <div class="card-body p-2">
+                            <p class="card-text text-truncate small mb-2" title="NotebookQuasion1.webp">NotebookQuasion1.webp</p>
+                            <div class="d-grid gap-1">
+                                <button class="btn btn-xs btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion1.webp', this)">複製連結</button>
+                                <button class="btn btn-xs btn-outline-secondary copy-btn" onclick="copyToClipboard('![NotebookQuasion1.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion1.webp)', this)">複製 MD</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="card h-100 shadow-sm">
+                        <div class="img-container" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion2.webp')">
+                             <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion2.webp" class="card-img-top img-preview" alt="NotebookQuasion2.webp" loading="lazy">
+                        </div>
+                        <div class="card-body p-2">
+                            <p class="card-text text-truncate small mb-2" title="NotebookQuasion2.webp">NotebookQuasion2.webp</p>
+                            <div class="d-grid gap-1">
+                                <button class="btn btn-xs btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion2.webp', this)">複製連結</button>
+                                <button class="btn btn-xs btn-outline-secondary copy-btn" onclick="copyToClipboard('![NotebookQuasion2.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion2.webp)', this)">複製 MD</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+                    </div>
+                </details>
+                
+                    </div>
+                </details>
+                
+                    </div>
+                </details>
+                
+                    </div>
+                </details>
+                
+                    </div>
+                </details>
+                
+                <details class="folder-section">
+                    <summary>📁 Share <span class="badge rounded-pill bg-secondary ms-1">2</span></summary>
+                    <div class="nested-content">
+                        
+            <div class="row g-2 mt-1 mb-3">
+                
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="card h-100 shadow-sm">
+                        <div class="img-container" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Share/avatar.webp')">
+                             <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Share/avatar.webp" class="card-img-top img-preview" alt="avatar.webp" loading="lazy">
+                        </div>
+                        <div class="card-body p-2">
+                            <p class="card-text text-truncate small mb-2" title="avatar.webp">avatar.webp</p>
+                            <div class="d-grid gap-1">
+                                <button class="btn btn-xs btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Share/avatar.webp', this)">複製連結</button>
+                                <button class="btn btn-xs btn-outline-secondary copy-btn" onclick="copyToClipboard('![avatar.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Share/avatar.webp)', this)">複製 MD</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="card h-100 shadow-sm">
+                        <div class="img-container" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Share/壓縮版小圖.webp')">
+                             <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Share/壓縮版小圖.webp" class="card-img-top img-preview" alt="壓縮版小圖.webp" loading="lazy">
+                        </div>
+                        <div class="card-body p-2">
+                            <p class="card-text text-truncate small mb-2" title="壓縮版小圖.webp">壓縮版小圖.webp</p>
+                            <div class="d-grid gap-1">
+                                <button class="btn btn-xs btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Share/壓縮版小圖.webp', this)">複製連結</button>
+                                <button class="btn btn-xs btn-outline-secondary copy-btn" onclick="copyToClipboard('![壓縮版小圖.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Share/壓縮版小圖.webp)', this)">複製 MD</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+                    </div>
+                </details>
+                
         </div>
         
-        <div class="folder-section">
-            <details open>
-                <summary>📁 Blog/posts/2026/02/NotebookLM (6 張)</summary>
-                <div class="row g-3 mt-2">
-                    
-            <div class="col-md-3 col-sm-6">
-                <div class="card h-100">
-                    <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMAddResource.webp" class="card-img-top img-preview" alt="NotebookLMAddResource.webp" loading="lazy" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMAddResource.webp')">
-                    <div class="card-body">
-                        <p class="card-text text-truncate" title="NotebookLMAddResource.webp"><strong>NotebookLMAddResource.webp</strong></p>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-sm btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMAddResource.webp', this)">複製 CDN 連結</button>
-                            <button class="btn btn-sm btn-outline-secondary copy-btn" onclick="copyToClipboard('![NotebookLMAddResource.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMAddResource.webp)', this)">複製 Markdown</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-3 col-sm-6">
-                <div class="card h-100">
-                    <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMCreateNotebook.webp" class="card-img-top img-preview" alt="NotebookLMCreateNotebook.webp" loading="lazy" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMCreateNotebook.webp')">
-                    <div class="card-body">
-                        <p class="card-text text-truncate" title="NotebookLMCreateNotebook.webp"><strong>NotebookLMCreateNotebook.webp</strong></p>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-sm btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMCreateNotebook.webp', this)">複製 CDN 連結</button>
-                            <button class="btn btn-sm btn-outline-secondary copy-btn" onclick="copyToClipboard('![NotebookLMCreateNotebook.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMCreateNotebook.webp)', this)">複製 Markdown</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-3 col-sm-6">
-                <div class="card h-100">
-                    <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMPasteUrl.webp" class="card-img-top img-preview" alt="NotebookLMPasteUrl.webp" loading="lazy" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMPasteUrl.webp')">
-                    <div class="card-body">
-                        <p class="card-text text-truncate" title="NotebookLMPasteUrl.webp"><strong>NotebookLMPasteUrl.webp</strong></p>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-sm btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMPasteUrl.webp', this)">複製 CDN 連結</button>
-                            <button class="btn btn-sm btn-outline-secondary copy-btn" onclick="copyToClipboard('![NotebookLMPasteUrl.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMPasteUrl.webp)', this)">複製 Markdown</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-3 col-sm-6">
-                <div class="card h-100">
-                    <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookOk1.webp" class="card-img-top img-preview" alt="NotebookOk1.webp" loading="lazy" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookOk1.webp')">
-                    <div class="card-body">
-                        <p class="card-text text-truncate" title="NotebookOk1.webp"><strong>NotebookOk1.webp</strong></p>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-sm btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookOk1.webp', this)">複製 CDN 連結</button>
-                            <button class="btn btn-sm btn-outline-secondary copy-btn" onclick="copyToClipboard('![NotebookOk1.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookOk1.webp)', this)">複製 Markdown</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-3 col-sm-6">
-                <div class="card h-100">
-                    <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion1.webp" class="card-img-top img-preview" alt="NotebookQuasion1.webp" loading="lazy" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion1.webp')">
-                    <div class="card-body">
-                        <p class="card-text text-truncate" title="NotebookQuasion1.webp"><strong>NotebookQuasion1.webp</strong></p>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-sm btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion1.webp', this)">複製 CDN 連結</button>
-                            <button class="btn btn-sm btn-outline-secondary copy-btn" onclick="copyToClipboard('![NotebookQuasion1.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion1.webp)', this)">複製 Markdown</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-3 col-sm-6">
-                <div class="card h-100">
-                    <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion2.webp" class="card-img-top img-preview" alt="NotebookQuasion2.webp" loading="lazy" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion2.webp')">
-                    <div class="card-body">
-                        <p class="card-text text-truncate" title="NotebookQuasion2.webp"><strong>NotebookQuasion2.webp</strong></p>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-sm btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion2.webp', this)">複製 CDN 連結</button>
-                            <button class="btn btn-sm btn-outline-secondary copy-btn" onclick="copyToClipboard('![NotebookQuasion2.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookQuasion2.webp)', this)">複製 Markdown</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-                </div>
-            </details>
-        </div>
-        
-        <div class="folder-section">
-            <details open>
-                <summary>📁 Share (2 張)</summary>
-                <div class="row g-3 mt-2">
-                    
-            <div class="col-md-3 col-sm-6">
-                <div class="card h-100">
-                    <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Share/avatar.webp" class="card-img-top img-preview" alt="avatar.webp" loading="lazy" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Share/avatar.webp')">
-                    <div class="card-body">
-                        <p class="card-text text-truncate" title="avatar.webp"><strong>avatar.webp</strong></p>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-sm btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Share/avatar.webp', this)">複製 CDN 連結</button>
-                            <button class="btn btn-sm btn-outline-secondary copy-btn" onclick="copyToClipboard('![avatar.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Share/avatar.webp)', this)">複製 Markdown</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-3 col-sm-6">
-                <div class="card h-100">
-                    <img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Share/壓縮版小圖.webp" class="card-img-top img-preview" alt="壓縮版小圖.webp" loading="lazy" onclick="window.open('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Share/壓縮版小圖.webp')">
-                    <div class="card-body">
-                        <p class="card-text text-truncate" title="壓縮版小圖.webp"><strong>壓縮版小圖.webp</strong></p>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-sm btn-outline-primary copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Share/壓縮版小圖.webp', this)">複製 CDN 連結</button>
-                            <button class="btn btn-sm btn-outline-secondary copy-btn" onclick="copyToClipboard('![壓縮版小圖.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Share/壓縮版小圖.webp)', this)">複製 Markdown</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-                </div>
-            </details>
-        </div>
-        
-        </div>
+        <footer class="mt-5 text-center text-muted small">
+            Generated by Cloud-Assets | <a href="#" onclick="window.scrollTo(0,0); return false;">Top</a>
+        </footer>
     </div>
 
     <script>
         function copyToClipboard(text, btn) {
             navigator.clipboard.writeText(text).then(() => {
                 const originalText = btn.innerText;
-                btn.innerText = "✅ 已複製";
-                btn.classList.replace("btn-outline-primary", "btn-success");
-                btn.classList.replace("btn-outline-secondary", "btn-success");
+                const originalClass = btn.className;
+                
+                btn.innerText = "已複製";
+                btn.className = "btn btn-xs btn-success copy-btn";
+                
                 setTimeout(() => {
                     btn.innerText = originalText;
-                    btn.classList.replace("btn-success", "btn-outline-primary");
-                    btn.classList.replace("btn-success", "btn-outline-secondary");
-                }, 2000);
+                    btn.className = originalClass;
+                }, 1500);
+            });
+        }
+        
+        function toggleAll(expand) {
+            document.querySelectorAll('details').forEach(d => {
+                if(expand) d.setAttribute('open', '');
+                else d.removeAttribute('open');
             });
         }
     </script>
