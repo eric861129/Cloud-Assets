@@ -58,6 +58,52 @@
 ---
 </details>
 
+## 📁 Blog/posts/2026/02/NotebookLM
+<details>
+<summary>點擊展開 / 摺疊 Blog/posts/2026/02/NotebookLM 中的圖片</summary>
+
+### 🖼️ NotebookLMAddResource.webp
+![NotebookLMAddResource.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMAddResource.webp)
+
+| 類型 | 語法 (點擊複製) |
+| :--- | :--- |
+| **CDN Link** | `https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMAddResource.webp` |
+| **Markdown** | `![NotebookLMAddResource.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMAddResource.webp)` |
+| **HTML** | `<img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMAddResource.webp" alt="NotebookLMAddResource.webp" loading="lazy">` |
+
+---
+### 🖼️ NotebookLMCreateNotebook.webp
+![NotebookLMCreateNotebook.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMCreateNotebook.webp)
+
+| 類型 | 語法 (點擊複製) |
+| :--- | :--- |
+| **CDN Link** | `https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMCreateNotebook.webp` |
+| **Markdown** | `![NotebookLMCreateNotebook.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMCreateNotebook.webp)` |
+| **HTML** | `<img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMCreateNotebook.webp" alt="NotebookLMCreateNotebook.webp" loading="lazy">` |
+
+---
+### 🖼️ NotebookLMPasteUrl.webp
+![NotebookLMPasteUrl.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMPasteUrl.webp)
+
+| 類型 | 語法 (點擊複製) |
+| :--- | :--- |
+| **CDN Link** | `https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMPasteUrl.webp` |
+| **Markdown** | `![NotebookLMPasteUrl.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMPasteUrl.webp)` |
+| **HTML** | `<img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookLMPasteUrl.webp" alt="NotebookLMPasteUrl.webp" loading="lazy">` |
+
+---
+### 🖼️ NotebookOk1.webp
+![NotebookOk1.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookOk1.webp)
+
+| 類型 | 語法 (點擊複製) |
+| :--- | :--- |
+| **CDN Link** | `https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookOk1.webp` |
+| **Markdown** | `![NotebookOk1.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookOk1.webp)` |
+| **HTML** | `<img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/Blog/posts/2026/02/NotebookLM/NotebookOk1.webp" alt="NotebookOk1.webp" loading="lazy">` |
+
+---
+</details>
+
 ## 📁 Share
 <details>
 <summary>點擊展開 / 摺疊 Share 中的圖片</summary>
