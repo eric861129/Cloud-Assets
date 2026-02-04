@@ -58,22 +58,6 @@
 ---
 </details>
 
-## 📁 Root (根目錄)
-<details>
-<summary>點擊展開 / 摺疊 Root (根目錄) 中的圖片</summary>
-
-### 🖼️ test-image.webp
-![test-image.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/test-image.webp)
-
-| 類型 | 語法 (點擊複製) |
-| :--- | :--- |
-| **CDN Link** | `https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/test-image.webp` |
-| **Markdown** | `![test-image.webp](https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/test-image.webp)` |
-| **HTML** | `<img src="https://cdn.jsdelivr.net/gh/eric861129/Cloud-Assets@main/test-image.webp" alt="test-image.webp" loading="lazy">` |
-
----
-</details>
-
 ## 📁 Share
 <details>
 <summary>點擊展開 / 摺疊 Share 中的圖片</summary>
