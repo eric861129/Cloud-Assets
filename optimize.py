@@ -17,6 +17,11 @@ def optimize_images(directory=".", quality=80):
                     with Image.open(filepath) as img:
                         img.save(output_path, "WEBP", quality=quality, method=6)
                     print(f"優化成功: {filepath} -> {output_path}")
+                    
+                    # 刪除原圖
+                    os.remove(filepath)
+                    print(f"已刪除原圖: {filepath}")
+                    
                 except Exception as e:
                     print(f"處理 {filepath} 時出錯: {e}")
 
