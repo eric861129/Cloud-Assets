@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Codex App Worktree 操作流程</title>
+  <desc id="desc">從 repo 規則、Local environments、Worktree thread 到驗證與收尾的流程圖。</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font: 700 34px "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", sans-serif; fill: #14213d; }
+      .subtitle { font: 400 18px "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", sans-serif; fill: #4b5563; }
+      .card { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; rx: 18; }
+      .card-rule { stroke: #2f80ed; }
+      .card-env { stroke: #16a34a; }
+      .card-work { stroke: #f59e0b; }
+      .card-review { stroke: #7c3aed; }
+      .step-num { font: 700 18px "Segoe UI", sans-serif; fill: #ffffff; }
+      .step-title { font: 700 22px "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", sans-serif; fill: #111827; }
+      .step-body { font: 400 15px "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", sans-serif; fill: #475569; }
+      .pill { fill: #14213d; }
+      .arrow { stroke: #64748b; stroke-width: 4; fill: none; marker-end: url(#arrowhead); }
+      .lane { fill: #e2e8f0; }
+    </style>
+    <marker id="arrowhead" markerWidth="12" markerHeight="12" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1280" height="720"/>
+  <text class="title" x="72" y="78">Codex App Worktree 操作流程</text>
+  <text class="subtitle" x="72" y="112">先整理 repo 規則，再讓新 Worktree 自動準備環境，最後用驗證與 review 把成果收回來。</text>
+
+  <rect class="lane" x="72" y="160" width="1136" height="6" rx="3"/>
+
+  <g transform="translate(72 210)">
+    <rect class="card card-rule" width="220" height="170"/>
+    <circle class="pill" cx="34" cy="34" r="18"/>
+    <text class="step-num" x="29" y="40">1</text>
+    <text class="step-title" x="24" y="76">寫好規則</text>
+    <text class="step-body" x="24" y="110">AGENTS.md</text>
+    <text class="step-body" x="24" y="134">repo map</text>
+    <text class="step-body" x="24" y="158">完成標準</text>
+  </g>
+
+  <path class="arrow" d="M310 295 H405"/>
+
+  <g transform="translate(424 210)">
+    <rect class="card card-env" width="220" height="170"/>
+    <circle class="pill" cx="34" cy="34" r="18"/>
+    <text class="step-num" x="29" y="40">2</text>
+    <text class="step-title" x="24" y="76">準備環境</text>
+    <text class="step-body" x="24" y="110">Local environments</text>
+    <text class="step-body" x="24" y="134">setup scripts</text>
+    <text class="step-body" x="24" y="158">actions</text>
+  </g>
+
+  <path class="arrow" d="M662 295 H757"/>
+
+  <g transform="translate(776 210)">
+    <rect class="card card-work" width="220" height="170"/>
+    <circle class="pill" cx="34" cy="34" r="18"/>
+    <text class="step-num" x="29" y="40">3</text>
+    <text class="step-title" x="24" y="76">開任務</text>
+    <text class="step-body" x="24" y="110">選 Worktree</text>
+    <text class="step-body" x="24" y="134">選起始 branch</text>
+    <text class="step-body" x="24" y="158">下明確 prompt</text>
+  </g>
+
+  <path class="arrow" d="M886 380 V420 H182 V454"/>
+
+  <g transform="translate(72 460)">
+    <rect class="card card-review" width="220" height="150"/>
+    <circle class="pill" cx="34" cy="34" r="18"/>
+    <text class="step-num" x="29" y="40">4</text>
+    <text class="step-title" x="24" y="76">檢查 diff</text>
+    <text class="step-body" x="24" y="110">看檔案清單</text>
+    <text class="step-body" x="24" y="134">排除任務外改動</text>
+  </g>
+
+  <path class="arrow" d="M310 535 H405"/>
+
+  <g transform="translate(424 460)">
+    <rect class="card card-review" width="220" height="150"/>
+    <circle class="pill" cx="34" cy="34" r="18"/>
+    <text class="step-num" x="29" y="40">5</text>
+    <text class="step-title" x="24" y="76">跑驗證</text>
+    <text class="step-body" x="24" y="110">build / test</text>
+    <text class="step-body" x="24" y="134">validate action</text>
+  </g>
+
+  <path class="arrow" d="M662 535 H757"/>
+
+  <g transform="translate(776 460)">
+    <rect class="card card-review" width="220" height="150"/>
+    <circle class="pill" cx="34" cy="34" r="18"/>
+    <text class="step-num" x="29" y="40">6</text>
+    <text class="step-title" x="24" y="76">收尾</text>
+    <text class="step-body" x="24" y="110">handoff</text>
+    <text class="step-body" x="24" y="134">commit / push / PR</text>
+  </g>
+
+  <g transform="translate(1080 470)">
+    <rect width="128" height="132" rx="18" fill="#14213d"/>
+    <text x="64" y="46" text-anchor="middle" font-family="Noto Sans TC, Microsoft JhengHei, Segoe UI, sans-serif" font-size="18" font-weight="700" fill="#ffffff">核心原則</text>
+    <text x="64" y="78" text-anchor="middle" font-family="Noto Sans TC, Microsoft JhengHei, Segoe UI, sans-serif" font-size="15" fill="#dbeafe">小任務</text>
+    <text x="64" y="102" text-anchor="middle" font-family="Noto Sans TC, Microsoft JhengHei, Segoe UI, sans-serif" font-size="15" fill="#dbeafe">可驗證</text>
+    <text x="64" y="126" text-anchor="middle" font-family="Noto Sans TC, Microsoft JhengHei, Segoe UI, sans-serif" font-size="15" fill="#dbeafe">可丟棄</text>
+  </g>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Codex App Worktree 環境分層</title>
+  <desc id="desc">AGENTS.md、Local environments、Worktree 和 review 四層在 AI Agent 開發流程中的角色。</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .title { font: 700 34px "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", sans-serif; fill: #1f2937; }
+      .subtitle { font: 400 18px "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", sans-serif; fill: #64748b; }
+      .layer-title { font: 700 24px "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", sans-serif; fill: #111827; }
+      .layer-body { font: 400 17px "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", sans-serif; fill: #374151; }
+      .label { font: 700 16px "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", sans-serif; fill: #ffffff; }
+      .note { font: 400 15px "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", sans-serif; fill: #475569; }
+      .shadow { filter: drop-shadow(0 14px 20px rgba(15, 23, 42, .12)); }
+    </style>
+  </defs>
+  <rect class="bg" width="1280" height="720"/>
+  <text class="title" x="72" y="78">把 Codex App 專案拆成四層</text>
+  <text class="subtitle" x="72" y="112">先定規則，再準備環境，再隔離任務，最後用 review 把結果收回工程流程。</text>
+
+  <g class="shadow">
+    <rect x="150" y="160" width="980" height="106" rx="18" fill="#dbeafe" stroke="#60a5fa" stroke-width="2"/>
+    <rect x="150" y="160" width="154" height="106" rx="18" fill="#2563eb"/>
+    <text class="label" x="227" y="207" text-anchor="middle">規則層</text>
+    <text class="label" x="227" y="233" text-anchor="middle">AGENTS.md</text>
+    <text class="layer-title" x="334" y="204">讓 Agent 知道這個 repo 怎麼工作</text>
+    <text class="layer-body" x="334" y="236">repo map、安全規則、驗證命令、完成標準都放在這裡。</text>
+
+    <rect x="150" y="292" width="980" height="106" rx="18" fill="#dcfce7" stroke="#4ade80" stroke-width="2"/>
+    <rect x="150" y="292" width="154" height="106" rx="18" fill="#16a34a"/>
+    <text class="label" x="227" y="339" text-anchor="middle">開機層</text>
+    <text class="label" x="227" y="365" text-anchor="middle">Local env</text>
+    <text class="layer-title" x="334" y="336">讓新 Worktree 能進入可工作狀態</text>
+    <text class="layer-body" x="334" y="368">setup scripts 準備 dependency，actions 固定常用驗證入口。</text>
+
+    <rect x="150" y="424" width="980" height="106" rx="18" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+    <rect x="150" y="424" width="154" height="106" rx="18" fill="#d97706"/>
+    <text class="label" x="227" y="471" text-anchor="middle">任務層</text>
+    <text class="label" x="227" y="497" text-anchor="middle">Worktree</text>
+    <text class="layer-title" x="334" y="468">讓每個 Agent 任務有自己的工作區</text>
+    <text class="layer-body" x="334" y="500">平行探索、背景修改、錯誤方向都不污染主要 checkout。</text>
+
+    <rect x="150" y="556" width="980" height="106" rx="18" fill="#ede9fe" stroke="#a78bfa" stroke-width="2"/>
+    <rect x="150" y="556" width="154" height="106" rx="18" fill="#7c3aed"/>
+    <text class="label" x="227" y="603" text-anchor="middle">收斂層</text>
+    <text class="label" x="227" y="629" text-anchor="middle">Review</text>
+    <text class="layer-title" x="334" y="600">用 diff、驗證和 handoff 做最後判斷</text>
+    <text class="layer-body" x="334" y="632">工程師保留審查權，Agent 負責把可檢查的成果交回來。</text>
+  </g>
+</svg>

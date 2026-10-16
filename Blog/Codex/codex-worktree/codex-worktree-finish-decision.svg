@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Codex App Worktree 收尾決策圖</title>
+  <desc id="desc">Worktree 任務完成後，根據驗證結果與是否需要本機介入，選擇 commit、handoff 或丟棄。</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font: 700 34px "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", sans-serif; fill: #111827; }
+      .subtitle { font: 400 18px "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", sans-serif; fill: #64748b; }
+      .node { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; rx: 20; }
+      .decision { fill: #fff7ed; stroke: #fb923c; stroke-width: 2; }
+      .good { fill: #ecfdf5; stroke: #10b981; stroke-width: 2; }
+      .warn { fill: #fef2f2; stroke: #ef4444; stroke-width: 2; }
+      .handoff { fill: #eef2ff; stroke: #6366f1; stroke-width: 2; }
+      .node-title { font: 700 22px "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", sans-serif; fill: #111827; }
+      .node-body { font: 400 16px "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", sans-serif; fill: #475569; }
+      .edge { stroke: #64748b; stroke-width: 4; fill: none; marker-end: url(#arrowhead); }
+      .edge-label { font: 700 15px "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", sans-serif; fill: #334155; }
+    </style>
+    <marker id="arrowhead" markerWidth="12" markerHeight="12" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1280" height="720"/>
+  <text class="title" x="72" y="78">Worktree 任務完成後，怎麼收尾？</text>
+  <text class="subtitle" x="72" y="112">先看 diff，再跑驗證；不要因為 Agent 做完了，就直接把結果收進主線。</text>
+
+  <g transform="translate(500 150)">
+    <rect class="node" width="280" height="96"/>
+    <text class="node-title" x="140" y="40" text-anchor="middle">任務完成</text>
+    <text class="node-body" x="140" y="68" text-anchor="middle">先不要急著 commit</text>
+  </g>
+
+  <path class="edge" d="M640 246 V318"/>
+
+  <g transform="translate(500 320)">
+    <rect class="decision" width="280" height="112"/>
+    <text class="node-title" x="140" y="42" text-anchor="middle">Diff 乾淨嗎？</text>
+    <text class="node-body" x="140" y="72" text-anchor="middle">沒有任務外改動</text>
+    <text class="node-body" x="140" y="94" text-anchor="middle">沒有秘密或暫存檔</text>
+  </g>
+
+  <path class="edge" d="M500 376 H318"/>
+  <text class="edge-label" x="376" y="352" text-anchor="middle">否</text>
+
+  <g transform="translate(72 320)">
+    <rect class="warn" width="246" height="112"/>
+    <text class="node-title" x="123" y="42" text-anchor="middle">先修正</text>
+    <text class="node-body" x="123" y="72" text-anchor="middle">請 Agent 收斂</text>
+    <text class="node-body" x="123" y="94" text-anchor="middle">或 revert hunk</text>
+  </g>
+
+  <path class="edge" d="M640 432 V504"/>
+  <text class="edge-label" x="670" y="470">是</text>
+
+  <g transform="translate(500 506)">
+    <rect class="decision" width="280" height="112"/>
+    <text class="node-title" x="140" y="42" text-anchor="middle">驗證通過嗎？</text>
+    <text class="node-body" x="140" y="72" text-anchor="middle">build / test / validate</text>
+    <text class="node-body" x="140" y="94" text-anchor="middle">至少跑一個主要 gate</text>
+  </g>
+
+  <path class="edge" d="M500 562 H318"/>
+  <text class="edge-label" x="376" y="538" text-anchor="middle">否</text>
+
+  <g transform="translate(72 506)">
+    <rect class="warn" width="246" height="112"/>
+    <text class="node-title" x="123" y="42" text-anchor="middle">修錯再驗證</text>
+    <text class="node-body" x="123" y="72" text-anchor="middle">保留失敗訊息</text>
+    <text class="node-body" x="123" y="94" text-anchor="middle">不要直接合併</text>
+  </g>
+
+  <path class="edge" d="M780 562 H962"/>
+  <text class="edge-label" x="904" y="538" text-anchor="middle">是</text>
+
+  <g transform="translate(962 248)">
+    <rect class="handoff" width="246" height="112"/>
+    <text class="node-title" x="123" y="42" text-anchor="middle">需要本機介入</text>
+    <text class="node-body" x="123" y="72" text-anchor="middle">handoff 回 Local</text>
+    <text class="node-body" x="123" y="94" text-anchor="middle">用 IDE 深看</text>
+  </g>
+
+  <path class="edge" d="M962 562 H842 V304 H954"/>
+  <text class="edge-label" x="904" y="596" text-anchor="middle">需本機驗證</text>
+
+  <g transform="translate(962 506)">
+    <rect class="good" width="246" height="112"/>
+    <text class="node-title" x="123" y="42" text-anchor="middle">可直接收斂</text>
+    <text class="node-body" x="123" y="72" text-anchor="middle">commit / push</text>
+    <text class="node-body" x="123" y="94" text-anchor="middle">或建立 PR</text>
+  </g>
+
+  <g transform="translate(962 392)">
+    <rect class="warn" width="246" height="76"/>
+    <text class="node-title" x="123" y="32" text-anchor="middle">方向不對</text>
+    <text class="node-body" x="123" y="58" text-anchor="middle">丟掉這個 Worktree</text>
+  </g>
+</svg>
